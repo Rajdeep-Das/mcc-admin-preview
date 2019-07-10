@@ -11,6 +11,23 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- main css-->
     <link rel="stylesheet" href="css/main.css">
+    <!-- Links for Cropper-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="cropper.css">
+    <script src="cropper.js"></script>
+
+
+    <!-- <script type="module" src="cropper/cropper.esm.js"></script> -->
+    <style>
+        .cropper-cop {
+            display: none;
+        }
+
+        .cropper-bg {
+            background: none;
+        }
+    </style>
+
 
     <title>Admin!</title>
 </head>
@@ -18,6 +35,14 @@
 <body>
     <div class="fetchnews">
         <h2>Admin News Preview</h2>
+
+        <div><img src="" alt="Image Load Here.." id="imagetest"></div>
+        <!-- <div>
+                <canvas id="canvas">
+                  Your browser does not support the HTML5 canvas element.
+                </canvas>
+              </div>  
+              <div id="result"></div> -->
         <div class="form-group">
             <label for="title">Api</label>
             <input type="text" class="form-control" id="api" aria-describedby="emailHelp"
@@ -38,10 +63,10 @@
                         <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">News Title</small>
                     </div>
-                    <div class="card" style="width: 35rem;">
-                        <img class="card-img-top" src="" alt="Image Load Here.." id="newsImage">
+                    <!-- <div class="card" style="width: 35rem;"> -->
+                    <div><img src="" alt="Image Load Here.." id="newsImage"></div>
 
-                    </div>
+                    <!-- </div> -->
                     <div class="form-group">
                         <label for="Desc">Desc</label>
                         <textarea class="form-control" rows="3" id="desc"></textarea>
@@ -61,56 +86,118 @@
 
 
                     <button type="reset" class="btn btn-primary btn-sm">Clear</button>&nbsp;
-                    <button type="button" class="btn btn-primary btn-sm" id="btn_prev" onclick="prevPage()">Prev</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btn_prev"
+                        onclick="prevPage()">Prev</button>
                     &nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary btn-sm" id="btn_next" onclick="nextPage()">Next</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btn_next"
+                        onclick="nextPage()">Next</button>
                     Page: <span id="page"></span>
                 </form>
             </div>
-            
+
             <div class="col">
-                    <form>
-                            <div class="form-group ">
-                                <label for="title">Final Title</label>
-                                <input type="text" class="form-control" id="finaltitle" aria-describedby="emailHelp">
-                                <small id="emailHelp" class="form-text text-muted">News Title</small>
-                            </div>
-                           
-        
-                            
-                            <div class="form-group">
-                                <label for="Desc">Final Desc</label>
-                                <textarea class="form-control" rows="3" id="finaldesc"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="Url">Final Url</label>
-                                <input type="text" class="form-control" id="finalnewsurl">
-                            </div>
-                            <div class="form-group">
-                                <label for="Url to Image">Final Url to Image</label>
-                                <input type="text" class="form-control" id="finalUrltoImage">
-                            </div>
-                            <div class="form-group">
-                                <label for="Source">Final Source</label>
-                                <input type="text" class="form-control" id="finalnewssource" value="">
-                            </div>
-        
-        
-                            <button type="reset" class="btn btn-primary btn-sm">Clear</button>&nbsp;
-                           
-                        </form>
-                            
-                    <!-- </br>
+                <form>
+                    <div class="form-group ">
+                        <label for="title">Final Title</label>
+                        <input type="text" class="form-control" id="finaltitle" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">News Title</small>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Desc">Final Desc</label>
+                        <textarea class="form-control" rows="3" id="finaldesc"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="Url">Final Url</label>
+                        <input type="text" class="form-control" id="finalnewsurl">
+                    </div>
+                    <div class="form-group">
+                        <label for="Url to Image">Final Url to Image</label>
+                        <input type="text" class="form-control" id="finalUrltoImage">
+                    </div>
+                    <div class="form-group">
+                        <label for="Source">Final Source</label>
+                        <input type="text" class="form-control" id="finalnewssource" value="">
+                    </div>
+
+
+                    <button type="reset" class="btn btn-primary btn-sm">Clear</button>&nbsp;
+
+                </form>
+
+                <!-- </br>
                         <a href="https://newsapi.org/" >Powered By https://newsapi.org/</a> -->
             </div>
-           
-            
+
+
         </div>
-        
+        <!-- Image Cropper library-->
+        <script>
+
+
+
+    // var img = document.querySelector("#imagetest"),
+    //     observer = new MutationObserver((changes) => {
+    //         changes.forEach(change => {
+    //             if (change.attributeName.includes('src')) {
+    //                 console.dir(img.src);
+
+
+    //         //         var image = $('#imagetest');
+    //         // var cropper = image.cropper({
+    //         //     aspectRatio: 16 / 9,
+
+    //         // });
+
+
+    //             }
+    //         });
+    //     });
+    // observer.observe(img, { attributes: true });
+
+
+
+        </script>
+
+        <!-- <script>
+         var canvas  = $("#canvas"),
+    context = canvas.get(0).getContext("2d"),
+    $result = $('#result');
+
+    function setcanvas(e){
+    var img = new Image();
+   img.onload = function() {
+     context.canvas.height = img.height;
+     context.canvas.width  = img.width;
+     context.drawImage(img, 0, 0);
+     
+     //instantiate the cropper here...
+     
+   };
+   
+   img.src = e;
+  
+} -->
+
+        </script>
 
 
         <!-- main scrpt-->
         <script type="text/javascript">
+            // var image = $('#imagetest');
+            // var cropper = image.cropper({
+            //     aspectRatio: 16 / 9,
+
+            // });
+
+            $('#newsImage').cropper({
+                        aspectRatio: 16 / 9,
+
+            });
+             $('#newsImage').attr('src', "http://www.tvdaijiworld.com/images6/asha_10719_ygrjsngflth.jpg");
+
 
             // --- News Related Varibales and Function---------------
             var newsData;
@@ -123,6 +210,7 @@
             var newsImage = document.getElementById("newsImage");
             var urltoimage = document.getElementById("UrltoImage");
             var newsurl = document.getElementById("newsurl");
+            var imgaeTest = document.getElementById("imagetest")
 
 
             //-------------Paignation Related Data-------------------
@@ -145,10 +233,9 @@
             }
             // --- main chane page function ----
             function changePage(page) {
-              
-               // console.log(newsData.articles.length);
-                if(newsData.articles.length<=0)
-                {
+
+                // console.log(newsData.articles.length);
+                if (newsData.articles.length <= 0) {
                     alert("Sorry! Now News Found")
                 }
 
@@ -162,7 +249,7 @@
                 if (page > numPages()) page = numPages();
 
                 // listing_table.innerHTML = "";
-
+                //$('#imagetest').cropper('destroy');
                 for (var i = (page - 1) * records_per_page; i < (page * records_per_page); i++) {
                     //listing_table.innerHTML += objJson[i].adName + "<br>";
                     title.value = newsData.articles[i].title;
@@ -170,7 +257,28 @@
                     newssource.value = newsData.articles[i].source.name;
                     newsurl.value = newsData.articles[i].url;
                     urltoimage.value = newsData.articles[i].urlToImage;
-                    newsImage.src = newsData.articles[i].urlToImage;
+                   
+                    // imgaeTest.src = newsData.articles[i].urlToImage;
+                    // $("#imagetest").removeAttr("src").attr("src", "");
+                    //$('#newsImage').cropper('destroy');
+                    //newsImage.src = newsData.articles[i].urlToImage;
+                    $('#newsImage').cropper('replace',newsData.articles[i].urlToImage,false)
+                    // $('#imagetest').attr('src', newsData.articles[i].urlToImage);
+                    // $('#newsImage').cropper({
+                    //     aspectRatio: 16 / 9,
+
+                    // });
+
+                    //setcanvas(newsData.articles[i].urlToImage);
+
+
+
+
+
+
+
+
+
                 }
                 page_span.innerHTML = page;
 
@@ -204,7 +312,7 @@
 
                 var api_news = api.value;
                 // Replace ./data.json with your JSON feed
-                     fetch(api_news)
+                fetch(api_news)
                     .then(response => {
                         return response.json()
                     })
@@ -214,7 +322,7 @@
                         console.log(newsData);
 
                         //total result
-                       
+
 
                         // title.value = data.articles[3].title;
                         // desc.value = data.articles[3].description;
@@ -227,9 +335,11 @@
                     })
                     .catch(err => {
                         // Do something for an error here
-                     console.log(err);
+                        console.log(err);
                     })
             }
+
+
 
 
 
@@ -238,17 +348,17 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-            <p></p>
-            <footer> <a href="https://newsapi.org/" >Powered By https://newsapi.org/</a></footer>
+        <p></p>
+        <footer> <a href="https://newsapi.org/">Powered By https://newsapi.org/</a></footer>
 </body>
 
 
