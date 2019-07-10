@@ -36,13 +36,8 @@
     <div class="fetchnews">
         <h2>Admin News Preview</h2>
 
-        <div><img src="" alt="Image Load Here.." id="imagetest"></div>
-        <!-- <div>
-                <canvas id="canvas">
-                  Your browser does not support the HTML5 canvas element.
-                </canvas>
-              </div>  
-              <div id="result"></div> -->
+        <!-- <div><img src="" alt="Image Load Here.." id="imagetest"></div> -->
+
         <div class="form-group">
             <label for="title">Api</label>
             <input type="text" class="form-control" id="api" aria-describedby="emailHelp"
@@ -127,77 +122,26 @@
 
                 </form>
 
-                <!-- </br>
-                        <a href="https://newsapi.org/" >Powered By https://newsapi.org/</a> -->
+
             </div>
 
 
         </div>
-        <!-- Image Cropper library-->
-        <script>
 
 
 
-    // var img = document.querySelector("#imagetest"),
-    //     observer = new MutationObserver((changes) => {
-    //         changes.forEach(change => {
-    //             if (change.attributeName.includes('src')) {
-    //                 console.dir(img.src);
-
-
-    //         //         var image = $('#imagetest');
-    //         // var cropper = image.cropper({
-    //         //     aspectRatio: 16 / 9,
-
-    //         // });
-
-
-    //             }
-    //         });
-    //     });
-    // observer.observe(img, { attributes: true });
-
-
-
-        </script>
-
-        <!-- <script>
-         var canvas  = $("#canvas"),
-    context = canvas.get(0).getContext("2d"),
-    $result = $('#result');
-
-    function setcanvas(e){
-    var img = new Image();
-   img.onload = function() {
-     context.canvas.height = img.height;
-     context.canvas.width  = img.width;
-     context.drawImage(img, 0, 0);
-     
-     //instantiate the cropper here...
-     
-   };
-   
-   img.src = e;
-  
-} -->
 
         </script>
 
 
         <!-- main scrpt-->
         <script type="text/javascript">
-            // var image = $('#imagetest');
-            // var cropper = image.cropper({
-            //     aspectRatio: 16 / 9,
 
-            // });
 
             $('#newsImage').cropper({
-                        aspectRatio: 16 / 9,
+                aspectRatio: 16 / 9,
 
             });
-             $('#newsImage').attr('src', "http://www.tvdaijiworld.com/images6/asha_10719_ygrjsngflth.jpg");
-
 
             // --- News Related Varibales and Function---------------
             var newsData;
@@ -210,7 +154,7 @@
             var newsImage = document.getElementById("newsImage");
             var urltoimage = document.getElementById("UrltoImage");
             var newsurl = document.getElementById("newsurl");
-            var imgaeTest = document.getElementById("imagetest")
+            //var imgaeTest = document.getElementById("imagetest")
 
 
             //-------------Paignation Related Data-------------------
@@ -257,24 +201,17 @@
                     newssource.value = newsData.articles[i].source.name;
                     newsurl.value = newsData.articles[i].url;
                     urltoimage.value = newsData.articles[i].urlToImage;
-                   
+
                     // imgaeTest.src = newsData.articles[i].urlToImage;
                     // $("#imagetest").removeAttr("src").attr("src", "");
                     //$('#newsImage').cropper('destroy');
-                    //newsImage.src = newsData.articles[i].urlToImage;
-                    $('#newsImage').cropper('replace',newsData.articles[i].urlToImage,false)
+                    newsImage.src = newsData.articles[i].urlToImage;
+                    $('#newsImage').cropper('replace', newsData.articles[i].urlToImage, false)
                     // $('#imagetest').attr('src', newsData.articles[i].urlToImage);
                     // $('#newsImage').cropper({
                     //     aspectRatio: 16 / 9,
 
                     // });
-
-                    //setcanvas(newsData.articles[i].urlToImage);
-
-
-
-
-
 
 
 
