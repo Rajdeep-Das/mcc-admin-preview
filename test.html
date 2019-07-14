@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <a style="display:none;" href="https://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2018%2F1106%2Fr459945_1296x729_16%2D9.jpg" download>save Image in my folder     </a>
+    <img src="https://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2018%2F1106%2Fr459945_1296x729_16%2D9.jpg"/>
+    <!-- the name of the folder is : (saveImage) :  and it is in the same 
+    place with my index.html-->
+    <button>save Image in my folder</button>
+     <script src="jquery-1.11.3.min.js"></script>
+    <script>
+    $("button").click(function()
+    {
+       $('a')[0].click();
+    });
+    </script>
+</body>
+</html>
