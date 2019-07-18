@@ -51,7 +51,7 @@
     <div class="container">
 
         <div class="row">
-                
+
             <div class="col">
                 <form>
                     <div class="form-group ">
@@ -60,7 +60,7 @@
                         <small id="emailHelp" class="form-text text-muted">News Title</small>
                     </div>
                     <!-- <div class="card" style="width: 35rem;"> -->
-                        <div><img src="" alt="Image Load Here.." id="newsImage"></div>
+                    <div><img src="" alt="Image Load Here.." id="newsImage"></div>
                     <!-- </div> -->
                     <div class="form-group">
                         <label for="Desc">Desc</label>
@@ -89,51 +89,52 @@
                     Page: <span id="page"></span>
                     <button type="button" class="btn btn-primary btn-sm" id="btn_next"
                         onclick="dataCopy()">Copy</button> &nbsp;
-                        <strong>Copy Status: </strong><span id="status"></span>
+                    <strong>Copy Status: </strong><span id="status"></span>
                 </form>
             </div>
             <div class="col">
                 <div>
-                <form>
-                    <div class="form-group ">
-                        <label for="title">Final Title</label>
-                        <input type="text" class="form-control" id="finaltitle" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted">News Title</small>
-                    </div>
-                    
+                    <form>
+                        <div class="form-group ">
+                            <label for="title">Final Title</label>
+                            <input type="text" class="form-control" id="finaltitle" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">News Title</small>
+                        </div>
+
                         <div><img src="" alt="Image Load Here.." id="finalnewsImage"></div>
-                  
 
 
-                    <div class="form-group">
-                        <label for="Desc">Final Desc</label>
-                        <textarea class="form-control" rows="3" id="finaldesc"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="Url">Final Url</label>
-                        <input type="text" class="form-control" id="finalnewsurl">
-                    </div>
-                    <div class="form-group">
-                        <label for="Url to Image">Final Url to Image</label>
-                        <input type="text" class="form-control" id="finalUrltoImage">
-                    </div>
-                    <div class="form-group">
-                        <label for="Source">Final Source</label>
-                        <input type="text" class="form-control" id="finalnewssource" value="">
-                    </div>
 
+                        <div class="form-group">
+                            <label for="Desc">Final Desc</label>
+                            <textarea class="form-control" rows="3" id="finaldesc"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Url">Final Url</label>
+                            <input type="text" class="form-control" id="finalnewsurl">
+                        </div>
+                        <div class="form-group">
+                            <label for="Url to Image">Final Url to Image</label>
+                            <input type="text" class="form-control" id="finalUrltoImage">
+                        </div>
+                        <div class="form-group">
+                            <label for="Source">Final Source</label>
+                            <input type="text" class="form-control" id="finalnewssource" value="">
+                        </div>
 
-                    <button type="reset" class="btn btn-primary btn-sm">Clear</button>&nbsp;
-                    <button type="button" class="btn btn-primary btn-sm" id="btn_next"
-                    onclick="dataLoad()">Load</button>
+                        <button type="reset" class="btn btn-primary btn-sm">Clear</button>&nbsp;
+                        <button type="button" class="btn btn-primary btn-sm" id="btn_next"
+                            onclick="dataLoad()">Load</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btn_next"
+                            onclick="uploadFile()">Save</button>
 
-                </form>
+                    </form>
 
 
                 </div>
 
             </div>
-            
+
         </div>
 
 
@@ -158,14 +159,15 @@
             var newsImage = document.getElementById("newsImage");
             var urltoimage = document.getElementById("UrltoImage");
             var newsurl = document.getElementById("newsurl");
-          
-          //------------- Final News Forms Varibales-----------------------
+
+            //------------- Final News Forms Varibales-----------------------
             var finalnewssource = document.getElementById("finalnewssource");
             var finaltitle = document.getElementById("finaltitle");
             var finaldesc = document.getElementById("finaldesc");
             var finalnewsImage = document.getElementById("finalnewsImage");
             var finalurltoimage = document.getElementById("finalUrltoImage");
             var finalnewsurl = document.getElementById("finalnewsurl");
+
 
 
             //-------------Paignation Related Data-------------------
@@ -225,9 +227,6 @@
 
                     // });
 
-
-
-
                 }
                 page_span.innerHTML = page;
 
@@ -269,16 +268,6 @@
                         // Work with JSON data here
                         newsData = data;
                         console.log(newsData);
-
-                        //total result
-
-
-                        // title.value = data.articles[3].title;
-                        // desc.value = data.articles[3].description;
-                        // newssource.value = data.articles[3].source.name;
-                        // newsurl.value = data.articles[3].url;
-                        // urltoimage.value = data.articles[3].urlToImage;
-                        // newsImage.src = data.articles[3].urlToImage;
                         changePage(1);
 
                     })
@@ -289,55 +278,93 @@
             }
 
 
-           function dataCopy()
-           {  // Just only Single Serverside call when copy button clicked
-               document.getElementById("status").innerHTML = "Start Copying"
-               document.getElementById("status").style.color = "RED";
-               var url = urltoimage.value;
-               var xmlhttp = new XMLHttpRequest();
-               xmlhttp.onreadystatechange = function () {
-                   if (this.readyState == 4 && this.status == 200) {
-                       document.getElementById("status").style.color = "GREEN";
-                       document.getElementById("status").innerHTML = "Copy Done"
-                       console.log("Save to Server");
-                   }
-               };
-               xmlhttp.open("GET", "saveimage.php?image="+url, true);
-               xmlhttp.send();
+            function dataCopy() {  // Just only Single Serverside call when copy button clicked
+                document.getElementById("status").innerHTML = "Start Copying"
+                document.getElementById("status").style.color = "RED";
+                var url = urltoimage.value;
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("status").style.color = "GREEN";
+                        document.getElementById("status").innerHTML = "Copy Done"
+                        console.log("Save to Server");
+                    }
+                };
+                xmlhttp.open("GET", "saveimage.php?image=" + url, true);
+                xmlhttp.send();
 
-           }
+            }
 
-           function dataLoad()
-           {
-               //Load the Final Form Data 
-               loadFinalFormData()
-               //Load Final Image and Add Copper
-               $('#finalnewsImage').cropper({
-                        aspectRatio: 4 / 3,
+            function dataLoad() {
+                //Load the Final Form Data 
+                loadFinalFormData()
+                //Load Final Image and Add Copper
+                $('#finalnewsImage').cropper({
+                    aspectRatio: 4 / 3,
+
+                });
+
+                d = new Date();
+                const currnt_domain = window.location.href;
+                const imgurl = currnt_domain + '/news_images/image.jpg?';
+                // $('#finalnewsImage').attr('src', imgurl+d.getTime());
+
+                $('#finalnewsImage').cropper('replace', imgurl + d.getTime(), false)
+
+
+
+            }
+
+            function loadFinalFormData() {
+                // add validation and other stuff to final form
+                finaltitle.value = title.value;
+                finaldesc.value = desc.value;
+                finalnewssource.value = newssource.value;
+                finalnewsurl.value = newsurl.value;
+                finalurltoimage.value = urltoimage.value;
+            }
+
+
+
+            // Upload To Server or PostHappening
+            function uploadFile() {
+
+                const currnt_domain = window.location.href;
+                const imgurl = currnt_domain + '/news_images/image.jpg?';
+                d = new Date();
+                const final_url = imgurl + d.getTime();
+
+                fetch(final_url)
+                    .then(res => res.blob()) // Gets the response and returns it as a blob similar to File object
+                    .then(blob => {
+
+                        sendImage(blob);
+
 
                     });
 
-               d = new Date();     
-               const currnt_domain =  window.location.href;
-               const imgurl = currnt_domain + '/news_images/image.jpg?';
-              // $('#finalnewsImage').attr('src', imgurl+d.getTime());
-              
-               $('#finalnewsImage').cropper('replace',imgurl+d.getTime(), false)
-               
-           }
 
-           function loadFinalFormData()
-           {
-               // add validation and other stuff to final form
-                    finaltitle.value = title.value;
-                    finaldesc.value = desc.value;
-                    finalnewssource.value = newssource.value;
-                    finalnewsurl.value = newsurl.value;
-                    finalurltoimage.value = urltoimage.value;
-                    
+            }
 
+            // Actual upload image file object
 
-           }
+            function sendImage(myfile) {
+                var formData = new FormData();
+                formData.append('fileToUpload', myfile); // to add custom image name -> formData.append('fileToUpload',myfile,'myname');
+
+                $.ajax(' ProcessData.php', {
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (e) {
+                        alert(e);
+                    },
+                    error: function () {
+                        console.log("Error Not Upload");
+                    }
+                });
+            }
 
 
         </script>
